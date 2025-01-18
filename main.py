@@ -5,7 +5,7 @@ import time
 
 bot = discord.Bot()
 
-token =os.getenv("TOKEN") 
+token = os.getenv("TOKEN") 
 
 @bot.event
 async def on_ready():
