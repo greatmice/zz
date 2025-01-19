@@ -1,29 +1,28 @@
 import aiohttp
 import discord
-import os
 import time
 
 bot = discord.Bot()
 
-token = os.getenv("TOKEN") 
-
 @bot.event
 async def on_ready():
-    print(f"We have logged in as {bot.user}")
+    print(f"Logged in as {bot.user}")
 
 @bot.slash_command(guild_ids=['962454553209470996'],description='Pings the bot')
 async def ping(ctx):
     t1 = time.time()
     message = await ctx.respond("Pong!")
     t2 = time.time()
-    ms = (t2 - t1) * 1000
-    await message.edit(content=f"Pong! `{ms:.0f}ms`")
+    latency = int((t2 - t1) * 1000)
+    await message.edit(content=f"Pong! `{latency}ms`")
     
 @bot.slash_command(guild_ids=['962454553209470996'], description='Gets a random a VERY funny joke')
-async def joke(ctx):
+async def dadjoke(ctx): 
     async with aiohttp.ClientSession() as session:
-        async with session.get('https://official-joke-api.appspot.com/random_joke') as response:
+        async with session.get("https://icanhazdadjoke.com",headers = {
+        'Accept': 'application/json'
+    }) as response:
             data = await response.json()
-            await ctx.respond(f"{data['setup']}—{data['punchline']}")
+            await ctx.respond(f"{data['joke']}")
             
-bot.run(token)
+bot.run("MTMyOTkxMzY5MDkyNDc3NzU2Mw.GSMjBU.uG9FjBrYt3KQKe1jI0n1vu7EJAKNWLYuk32YuY")
