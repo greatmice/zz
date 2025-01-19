@@ -1,5 +1,6 @@
 import aiohttp
 import discord
+import os
 import time
 
 bot = discord.Bot()
@@ -25,4 +26,4 @@ async def dadjoke(ctx):
             data = await response.json()
             await ctx.respond(f"{data['joke']}")
             
-bot.run("os.getenv("TOKEN")
+bot.run(os.getenv("TOKEN"))
