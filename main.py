@@ -25,4 +25,4 @@ async def dadjoke(ctx):
             data = await response.json()
             await ctx.respond(f"{data['joke']}")
             
-bot.run("MTMyOTkxMzY5MDkyNDc3NzU2Mw.GSMjBU.uG9FjBrYt3KQKe1jI0n1vu7EJAKNWLYuk32YuY")
+bot.run("os.getenv("TOKEN")
