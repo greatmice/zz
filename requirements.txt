@@ -1,3 +1,0 @@
-aiohttp
-py-cord
-typing-extensions
